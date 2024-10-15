@@ -107,7 +107,7 @@ import base64
 import pikepdf
 
 load_dotenv()
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAjxGxSRwazR6jQJrctjeTgMwbiWhkFT7Y"
+os.environ["GOOGLE_API_KEY"] = "Your_API_Key"
 db = mysql.connector.connect(
     host="localhost",
     user="root",
