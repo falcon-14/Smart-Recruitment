@@ -1,110 +1,74 @@
 import os
-import streamlit as st
-from dotenv import load_dotenv
-from PyPDF2 import PdfReader
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain_google_genai import ChatGoogleGenerativeAI
-import mysql.connector
-from datetime import datetime, timedelta
-import json
-import bcrypt
-import pandas as pd
-import plotly.express as px
-import logging
-import cv2
-import numpy as np
-import time
-from PIL import Image
+import io
 import re
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-import cv2
-import numpy as np
+import json
 import time
-import random
-import smtplib
-import speech_recognition as sr
-from moviepy.editor import VideoFileClip
-import cv2
-import numpy as np
-from textblob import TextBlob
-from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
-import av
-from moviepy.editor import VideoFileClip
-from speech_recognition import Recognizer, AudioFile
-import streamlit as st
-import cv2
-import tempfile
-import os
-import pyaudio
 import wave
+import random
+import string
+import logging
+import tempfile
 import threading
+import functools
+import base64
+from datetime import datetime, timedelta
+from typing import Optional, Dict, Any
+
 import numpy as np
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.chains import RetrievalQA
+import pandas as pd
+import cv2
+import av
+import pyaudio
 import requests
+import bcrypt
+import pikepdf
+from PIL import Image
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import plotly.graph_objects as go
+from sklearn.metrics.pairwise import cosine_similarity
+from textblob import TextBlob
+from deepface import DeepFace
+from pydub import AudioSegment
+from PyPDF2 import PdfReader
 from github import Github
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from google.auth.transport.requests import Request
+from google_auth_oauthlib.flow import InstalledAppFlow
+from moviepy.editor import VideoFileClip
+
 import streamlit as st
 import streamlit.components.v1 as components
-from streamlit_option_menu import option_menu
-import extra_streamlit_components as stx
-from streamlit_lottie import st_lottie
-import requests
-import plotly.graph_objects as go
-import plotly.express as px
-from streamlit_option_menu import option_menu
-import streamlit as st
 import streamlit_extras as stxa
 import extra_streamlit_components as stx
 from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
-import requests
-import json
-from datetime import datetime, timedelta
-import json
-from datetime import datetime, timedelta
+from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
+from audio_recorder_streamlit import audio_recorder
+
+import mysql.connector
+from mysql.connector import IntegrityError
+
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from icalendar import Calendar, Event
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from google.auth.transport.requests import Request
-from google_auth_oauthlib.flow import InstalledAppFlow
-from langchain import PromptTemplate, LLMChain
+
+import speech_recognition as sr
+from speech_recognition import Recognizer, AudioFile
+
+from dotenv import load_dotenv
+
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain, RetrievalQA
 from langchain.llms import GooglePalm
 from langchain.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.chains import RetrievalQA
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics.pairwise import cosine_similarity
-import logging
-import string
-import cv2
-from deepface import DeepFace
-import numpy as np
-from audio_recorder_streamlit import audio_recorder
-import speech_recognition as sr
-from pydub import AudioSegment
-import io
-import os
-import tempfile
-import logging
-from typing import Optional, Dict, Any
-import functools
-from mysql.connector import IntegrityError
-import base64
-import pikepdf
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 
 load_dotenv()
 os.environ["GOOGLE_API_KEY"] = "Your_API_Key"
