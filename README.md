@@ -50,6 +50,8 @@ This AI-driven recruitment system revolutionizes the hiring process for both emp
    streamlit run app.py
    ```
 
+## For MySQL Database Code ping me chaithanyar302@gmail.com
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
