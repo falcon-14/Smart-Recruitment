@@ -111,7 +111,7 @@ os.environ["GOOGLE_API_KEY"] = "Your_API_Key"
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Chaithu@9515",
+    password="root",
     database="glory"
 )
 cursor = db.cursor(dictionary=True)
